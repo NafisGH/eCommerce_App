@@ -1,0 +1,102 @@
+// @import "~bootstrap/scss/bootstrap";
+@import "normalize.css";
+@import "~bootstrap/scss/bootstrap";
+
+p {
+  margin-bottom: 0;
+}
+
+#app {
+  width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  background: #ededed;
+}
+.wrapper-container {
+  border: 1px solid black;
+  display: flex;
+  padding-top: 51px;
+  padding-bottom: 51px;
+  padding-left: 122px;
+
+  .container {
+    margin-right: 20px;
+    padding: 24px;
+
+    .col-md-3 {
+      padding: 16px;
+
+      .card {
+        padding: 16px;
+        border-radius: 22px;
+        .card-body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .wrapper-img {
+      width: 191px;
+      .img {
+        width: 100%;
+      }
+    }
+
+    .discription {
+      padding: 8px;
+      & p {
+        margin-bottom: 8px;
+      }
+      .price-cart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .cart-btn {
+          background-color: black;
+          border-radius: 9px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 8px;
+        }
+      }
+    }
+  }
+
+  .vertical-line {
+    width: 4px;
+    height: 921.6px;
+    background: rgba(26, 31, 22, 0.5);
+  }
+
+  .cart {
+    max-width: 100%;
+    padding-left: 91px;
+    padding-right: 91px;
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    .wrapper-btn-cart {
+      background-color: black;
+      padding: 8px 24px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+
+      p {
+        color: #fff;
+        margin-left: 8px;
+      }
+    }
+  }
+}
