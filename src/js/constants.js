@@ -1,0 +1,1 @@
+export const PRODUCTS_FIREBASE_KEY = "products";
