@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkKrAM_rH0E8fwwdmpG5Gx8OPhwuTiywg",
@@ -36,7 +36,19 @@ export function createFirebase(key) {
       } catch (error) {
         console.log("Ошибка при получении данных", error);
       }
-      
+    },
+    pullOneDocument: async function getDocument(id) {
+      const docRef = doc(this.db, this.key, id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return docSnap.data()
+        // console.log("Document data:", docSnap.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+        return null; // Возвращаем null, если документ не найден
+      }
     },
   };
 }
