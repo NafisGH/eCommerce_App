@@ -1,5 +1,5 @@
 export function createView() {
-  const containerNode = document.querySelector(".container");
+  const containerNode = document.querySelector(".inner");
   const rowNode = document.querySelector(".row");
 
   return {
@@ -12,29 +12,44 @@ export function createView() {
     },
 
     renderCardProduct: function (product) {
-
       containerNode.innerHTML = `
-      <a href="/">Вернуться назад</a>
-        <div class="card">
-        <div class="wrapper-img">
-            <img src="${product.img}" class="card-img-top" alt="${product.brand} ${product.model}">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">${product.brand}</h5>
-            <h5 class="card-title">${product.model}</h5>
-            <p class="card-text"><strong>Price: </strong>${product.price}</p>
-            <p class="card-text"><strong>shortDescription: </strong>${product.shortDescription}</p>
-            <p class="card-text"><strong>fullDescription: </strong>${product.fullDescription}</p>
+
+    <a href="/">< Список товаров</a>
+
+        <div class="top-area">
+            <div class="top-area_card">
+              <div class="top-area_wrapper-img">
+                <img class="top-area_img" src="${product.img}" alt="${product.brand}">
+              </div>
+            </div>
+            <div class="about-device">
+              <h5 class="top-area_brand">${product.brand}</h5>
+              <h5 class="top-area_model">${product.model}</h5>
+              <h5 class="top-area_rating">Рейтинг *****</h5>
+              <p class="top-area_price">$ ${product.price}</p>
+              <p class="top-area_shortDescription">${product.shortDescription}</p>
+              <div class="top-area_btn-in-cart">
+                <div><img src="/images/Icon_cart.svg" alt=""></div>
+                <p>Корзина</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="gorizont-line"></div>
+
+        <div class="bottom-area">
+          <div class="description-wrapper">
+            <p class="title-description">Описание</p>
+            <p class="description-text">${product.fullDescription}</p>
           </div>
         </div>
       `;
     },
 
     listProduct: function (product) {
-
       const divCol = document.createElement("div");
       divCol.classList.add("col-md-3");
-      divCol.setAttribute("id", product.id)
+      divCol.setAttribute("id", product.id);
 
       const divCard = document.createElement("div");
       divCard.classList.add("card");
@@ -44,8 +59,8 @@ export function createView() {
 
       const img = document.createElement("img");
       img.classList.add("img");
-      img.src = product.img
-    
+      img.src = product.img;
+
       const divDiscription = document.createElement("div");
       divDiscription.classList.add("discription");
 
@@ -62,7 +77,7 @@ export function createView() {
 
       const divPrice = document.createElement("div");
       divPrice.classList.add("price");
-      divPrice.innerText = product.price;
+      divPrice.innerText = `$ ${product.price}`;
 
       const divCartBtn = document.createElement("div");
       divCartBtn.classList.add("cart-btn");
@@ -71,21 +86,19 @@ export function createView() {
       imgSvgCart.classList.add("img");
       imgSvgCart.src = "/images/cart.svg";
 
-      divCardBody.append(img)
-      divCard.append(divCardBody)
-      divCol.append(divCard)
+      divCardBody.append(img);
+      divCard.append(divCardBody);
+      divCol.append(divCard);
 
-      divCartBtn.append(imgSvgCart)
-      divPriceCart.append(divPrice)
-      divPriceCart.append(divCartBtn)
-      divDiscription.append(pBrand)
-      divDiscription.append(pModel)
-      divDiscription.append(divPriceCart)
-      divCol.append(divDiscription)
+      divCartBtn.append(imgSvgCart);
+      divPriceCart.append(divPrice);
+      divPriceCart.append(divCartBtn);
+      divDiscription.append(pBrand);
+      divDiscription.append(pModel);
+      divDiscription.append(divPriceCart);
+      divCol.append(divDiscription);
 
-      rowNode.append(divCol)
+      rowNode.append(divCol);
     },
-
-    
   };
 }

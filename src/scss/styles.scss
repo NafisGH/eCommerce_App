@@ -1,5 +1,6 @@
-@import "normalize.css";
 @import "~bootstrap/scss/bootstrap";
+@import "normalize.css";
+
 
 p {
   margin-bottom: 0;
@@ -7,7 +8,6 @@ p {
 
 #app {
   width: 1440px;
-  height: 100vh;
   margin: 0 auto;
   background: #ededed;
 }
@@ -36,15 +36,16 @@ p {
       }
     }
 
-    .wrapper-img {
-      width: 191px;
-      .img {
-        width: 100%;
-      }
-    }
-
     .discription {
       padding: 8px;
+      .brand {
+        font-size: 20px;
+      }
+      .model {
+        font-size: 16px;
+        letter-spacing: -0.32px;
+        color: #60695C;
+      }
       & p {
         margin-bottom: 8px;
       }
