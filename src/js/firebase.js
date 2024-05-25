@@ -1,6 +1,14 @@
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "firebase/auth";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkKrAM_rH0E8fwwdmpG5Gx8OPhwuTiywg",
@@ -12,12 +20,15 @@ const firebaseConfig = {
   measurementId: "G-KCG3D09TY3",
 };
 
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
 export function createFirebase(key) {
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
   return {
     key,
     db,
+    auth,
     pull: async function get() {
       try {
         const querySnapshot = await getDocs(collection(this.db, this.key));
@@ -42,12 +53,24 @@ export function createFirebase(key) {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        return docSnap.data()
-        // console.log("Document data:", docSnap.data());
+        return docSnap.data();
       } else {
-        // docSnap.data() will be undefined in this case
         console.log("No such document!");
-        return null; // Возвращаем null, если документ не найден
+        return null;
+      }
+    },
+    createUser: async function getCreateUser(email, password) {
+      console.log("createUser called with email:", email, "and password:", password);
+      const userReg = []
+      try {
+        console.log("Attempting to create user...");
+        const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+        console.log("userCredential------", userCredential);
+        const user = userCredential.user;
+        console.log("userCredential.user =======", user.uid);
+        return user
+      } catch (error) {
+        console.error("Ошибка при регистрации:", error.code, error.message);
       }
     },
   };

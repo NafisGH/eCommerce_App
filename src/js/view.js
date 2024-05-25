@@ -1,10 +1,12 @@
 export function createView() {
-  const containerNode = document.querySelector(".inner");
+  const innerNode = document.querySelector(".inner"); // product.html
   const rowNode = document.querySelector(".row");
+  const cartNode = document.querySelector(".cart");
 
   return {
-    containerNode,
+    innerNode,
     rowNode,
+    cartNode,
     render: function (products) {
       products.forEach((product) => {
         this.listProduct(product);
@@ -12,7 +14,7 @@ export function createView() {
     },
 
     renderCardProduct: function (product) {
-      containerNode.innerHTML = `
+      innerNode.innerHTML = `
 
     <a href="/">< Список товаров</a>
 
@@ -48,14 +50,14 @@ export function createView() {
 
     listProduct: function (product) {
       const divCol = document.createElement("div");
-      divCol.classList.add("col-md-3");
+      divCol.classList.add("card");
       divCol.setAttribute("id", product.id);
 
       const divCard = document.createElement("div");
-      divCard.classList.add("card");
+      divCard.classList.add("card__inner");
 
       const divCardBody = document.createElement("div");
-      divCardBody.classList.add("card-body");
+      divCardBody.classList.add("img-wrapper");
 
       const img = document.createElement("img");
       img.classList.add("img");
@@ -99,6 +101,24 @@ export function createView() {
       divCol.append(divDiscription);
 
       rowNode.append(divCol);
+    },
+    renderUser: function (user) {
+      console.log(user);
+      const userUid = document.createElement("div");
+
+      // Создаем элементы для отображения email и uid
+      const emailText = document.createElement("p");
+      emailText.textContent = `Email: ${user.email}`;
+
+      const uidText = document.createElement("p");
+      uidText.textContent = `UID: ${user.uid}`;
+
+      // Добавляем созданные элементы в контейнер userUid
+      userUid.appendChild(emailText);
+      userUid.appendChild(uidText);
+
+      // Добавляем созданный элемент в контейнер cartNode
+      cartNode.append(userUid);
     },
   };
 }
