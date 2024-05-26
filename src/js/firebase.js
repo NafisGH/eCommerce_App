@@ -6,7 +6,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 
@@ -65,13 +66,32 @@ export function createFirebase(key) {
       try {
         console.log("Attempting to create user...");
         const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-        console.log("userCredential------", userCredential);
         const user = userCredential.user;
-        console.log("userCredential.user =======", user.uid);
         return user
       } catch (error) {
         console.error("Ошибка при регистрации:", error.code, error.message);
       }
     },
+    signIn: async function signInUser(email, password) {
+      try {
+        const userCredential = await signInWithEmailAndPassword(this.auth, email, password)
+        const user = userCredential.user;
+        return user;
+      } catch (error) {
+        console.error("Ошибка при входе:", error.code, error.message);
+      }
+    },
+    initAuthListener: function (callback) {
+      onAuthStateChanged(this.auth, (user) => {
+        if (user) {
+          callback(user);
+        } else {
+          callback(null);
+        }
+      });
+    },
+    signOut: function () {
+      return this.auth.signOut()
+    }
   };
 }
