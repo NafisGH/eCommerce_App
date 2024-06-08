@@ -1,97 +1,116 @@
+// Reset and base styles
+html {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-}
-/**
-Убираем внутренние отступы слева 
-тегами списка у которых есть атрибут class
-*/
-:where(ul, ol):where([class]) {
-  padding-left: 0;
+  box-sizing: inherit;
 }
 
-/**
-Убираем внешние отступы body и двум другим 
-у которых есть атрибут class
-*/
-body,
-:where(blockquote, figure):where([class]) {
-  margin: 0;
+//Links
+
+a {
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
 }
 
-/**
-Убираем внешние отступы вертикали нужным тегам,
-у которых есть атрибут class
-*/
-:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
-  margin-block: 0;
+
+// Common 
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
 }
 
-:where(dd[class]) {
-  margin-left: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-/**
-  Убираем стандартный маркер маркированному списку,
-  у которых есть атрибут class
-  */
-:where(ul[class]) {
+ul,
+ul li {
   list-style: none;
 }
 
-/**
-Упрощаем работу с изображениями
-*/
 img {
-  display: block;
-  min-width: 100%;
+  vertical-align: top;
 }
 
-/**
-Наследуем свойства шрифт для полей ввода
-*/
+img,
+svg,
+video {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+address {
+  font-style: normal;
+}
+
+// Form 
 
 input,
 textarea,
-select,
-button {
-  font: inherit;
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
 }
 
-html {
-  /**
-Пригодится в большинстве ситуаций
-(когда например нужно будет прижать футер к низу сайта)
-*/
-  height: 100%;
-  /**
-плавный скролл
-*/
-scroll-behavior: smooth;
+input::-ms-clear {
+  display: none;
 }
 
-body {
-    /**
-    Пригодится в большинстве ситуаций
-    (когда например нужно будет прижать футер к низу сайта)
-    */
-    min-height: 100%;
-    /**
-    Унифицированный интерлиньях
-    */
-    line-height: 1;
+button,
+input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
 }
 
-/**
-Удаляем все анимации и переходы для людей,
-которые предпочитают их не использовать
-*/
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
 }

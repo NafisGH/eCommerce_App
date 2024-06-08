@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", handleRegistrationPage);
 const firebase = createFirebase(PRODUCTS_FIREBASE_KEY);
 
 function handleRegistrationPage() {
-  const registrationForm = document.querySelector(".registrationForm");
+  const registrationForm = document.querySelector(".registration");
   const emailNode = document.querySelector(".email");
   const passwordNode = document.querySelector(".password");
 
@@ -19,7 +19,6 @@ function handleRegistrationPage() {
 
   async function registrationUser(event) {
     event.preventDefault();
-
     const email = emailNode.value.trim();
     const password = passwordNode.value.trim();
 
@@ -28,8 +27,6 @@ function handleRegistrationPage() {
     } else {
       try {
         const user = await firebase.createUser(email, password);
-        console.log("User UID:---", user);
-
         // Сохранение данных пользователя в localStorage
         localStorage.setItem("user", JSON.stringify(user)); 
 

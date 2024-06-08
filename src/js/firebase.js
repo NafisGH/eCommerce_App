@@ -62,7 +62,7 @@ export function createFirebase(key) {
     },
     createUser: async function getCreateUser(email, password) {
       console.log("createUser called with email:", email, "and password:", password);
-      const userReg = []
+
       try {
         console.log("Attempting to create user...");
         const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -73,9 +73,11 @@ export function createFirebase(key) {
       }
     },
     signIn: async function signInUser(email, password) {
+      console.log('-----1');
       try {
         const userCredential = await signInWithEmailAndPassword(this.auth, email, password)
         const user = userCredential.user;
+        console.log('signIn', user);
         return user;
       } catch (error) {
         console.error("Ошибка при входе:", error.code, error.message);

@@ -1,87 +1,166 @@
 // @import "normalize.css";
 @import "./reset.scss";
 
-#app {
+
+.container {
   max-width: 1440px;
   margin: 0 auto;
-  background: #ededed;
+  padding: 0 20px;
+  background: #e1dddd;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: start;
   padding-top: 36px;
+  width: 100%;
+
+  .header_nav-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 
   .header__logo {
-    padding: 5px 15px;
-    border-radius: 35px;
+    padding: 10px 30px;
+    border-radius: 20px;
     background: black;
-    color: #fff;
+    color: #7af165;
     font-size: 42px;
   }
-  .nav {
+
+  .catalog__container {
     display: flex;
-    .nav__link {
-      display: block;
+    align-items: center;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 3px 15px;
+    margin-left: 50px;
+
+    .catalog__icon {
+      margin-right: 8px;
+      width: 24px;
+      height: 24px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .input__container {
+    margin-left: 50px;
+    width: 100%;
+    form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px black solid;
+      border-radius: 5px;
+
+      .input__field {
+        width: 100%;
+
+        input {
+          width: 100%;
+          padding: 5px;
+        }
+      }
+
+      & .input__icons:hover {
+        cursor: pointer;
+      }
+
+      .input__icons {
+        // background-color: #7af165;
+        border-radius: 5px;
+        padding: 2px;
+      }
+    }
+  }
+  .nav-tabs {
+    display: flex;
+    margin-left: 50px;
+
+    .nav-tab {
       text-decoration: none;
       color: black;
-      font-size: 25px;
-      letter-spacing: -0.54px;
-      
-    }
-    .nav__link:not(:first-child) {
-      margin-left: 50px;
-    }
-    .logoutButton {
-      font-size: 25px;
+      font-size: 15px;
       padding: 3px;
-      margin-left: 50px;
+      border-radius: 5px;
+      letter-spacing: -0.54px;
+      display: flex;
+      align-items: center;
+
+      div {
+        display: flex;
+        justify-content: center;
+      }
     }
-    .logoutButton:hover {
-      background-color: black;
-      color: #fff;
+
+    .nav-tab:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .nav-tab:hover {
       cursor: pointer;
+      background-color: #7af165;
+    }
+    .lable-enter, .lable-cart, .lable-exit {
+      white-space: nowrap;
+      display: inline-block;
     }
   }
 }
-.wrapper-container {
+.wrap-product {
   display: flex;
   padding-top: 51px;
   padding-bottom: 51px;
   padding-left: 122px;
 
-  
-
   .row {
-    // max-width: 953px;
     display: flex;
+    // align-items: flex-start;
     flex-wrap: wrap;
     gap: 16px;
+    padding: 0 5px;
 
     .card {
       padding: 16px;
-      width: 190px;
-          height: 236px;
+      width: 214px;
+      height: 360px;
+      border: 1px black solid;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      
       .card__inner {
-        padding: 16px;
-        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
         .img-wrapper {
           display: flex;
           justify-content: center;
           align-items: center;
+          width: 160px;
+          height: 200px;
+          margin: 0 auto;
           img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
           }
         }
       }
     }
+    .card:hover {
+      cursor: pointer;
+      background-color: #7af165;
+    }
   }
-  
 
   .vertical-line {
-    width: 4px;
-    height: 921.6px;
+    width: 10px;
+    height: 921px;
     background: rgba(26, 31, 22, 0.5);
   }
 
@@ -92,6 +171,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 
     h2 {
       margin-bottom: 30px;
@@ -115,6 +195,9 @@
 
   .discription {
     padding: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     .brand {
       font-size: 20px;
     }
@@ -137,6 +220,9 @@
         justify-content: center;
         align-items: center;
         padding: 8px;
+      }
+      & .cart-btn:hover {
+        cursor: pointer;
       }
     }
   }

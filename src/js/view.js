@@ -2,11 +2,14 @@ export function createView() {
   const innerNode = document.querySelector(".inner"); // product.html
   const rowNode = document.querySelector(".row");
   const cartNode = document.querySelector(".cart");
+  const navTabsEnter = document.querySelector(".lable-enter");
 
   return {
     innerNode,
     rowNode,
     cartNode,
+    navTabsEnter,
+
     render: function (products) {
       products.forEach((product) => {
         this.listProduct(product);
@@ -103,22 +106,11 @@ export function createView() {
       rowNode.append(divCol);
     },
     renderUser: function (user) {
-      console.log(user);
-      const userUid = document.createElement("div");
-
-      // Создаем элементы для отображения email и uid
-      const emailText = document.createElement("p");
-      emailText.textContent = `Email: ${user.email}`;
-
-      const uidText = document.createElement("p");
-      uidText.textContent = `UID: ${user.uid}`;
-
-      // Добавляем созданные элементы в контейнер userUid
-      userUid.appendChild(emailText);
-      userUid.appendChild(uidText);
-
-      // Добавляем созданный элемент в контейнер cartNode
-      cartNode.append(userUid);
+      // Добавляем созданный элемент на страницу
+      if (user) {
+        navTabsEnter.innerText = user.email
+      }
+      
     },
   };
 }

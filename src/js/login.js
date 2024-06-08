@@ -27,10 +27,11 @@ function handleRegistrationPage() {
 
     try {
       const user = await firebase.signIn(email, password);
+      // Сохранение данных пользователя в localStorage
       localStorage.setItem("user", JSON.stringify(user));
       setTimeout(() => {
         window.location.href = "index.html";
-      }, 2000);
+      }, 2000); // Задержка 2 секунды перед перенаправлением
     } catch (error) {}
   }
 }
