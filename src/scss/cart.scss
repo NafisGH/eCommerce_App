@@ -25,7 +25,7 @@ h1 {
         justify-content: space-between;
         padding: 16px 24px;
         
-        .card__description {
+        .card__info {
           width: 100%;
           margin-left: 16px;
           .card__brand {
@@ -36,7 +36,7 @@ h1 {
             color: #60695C;
             margin-top: 8px;
           }
-          .card__short-description {
+          .card__description {
             font-size: 20px;
             margin-top: 16px;
           }

@@ -175,6 +175,7 @@
 
     h2 {
       margin-bottom: 30px;
+      font-size: 39px;
     }
 
     .wrapper-btn-cart {
@@ -223,6 +224,7 @@
       }
       & .cart-btn:hover {
         cursor: pointer;
+        background-color: gray;
       }
     }
   }

@@ -16,11 +16,12 @@ function handleMainPage() {
   const storedUser = localStorage.getItem("user");
   if (storedUser) {
     const user = JSON.parse(storedUser);
-    console.log("User is signed in from localStorage:", user);
     view.renderUser(user);
   } else {
     console.log("No user data in localStorage.");
   }
+
+ 
 
   // Инициализация слушателя аутентификации
   firebase.initAuthListener((user) => {
@@ -31,13 +32,69 @@ function handleMainPage() {
     }
   });
 
+  // Загрузка корзины из localStorage
+  // const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Рендеринг корзины при загрузке страницы
+  // view.renderProductCart(cart);
+
   if (rowNode) {
     firebase.pull().then((products) => {
       view.render(products);
+
+      // Навешивание делегированного обработчика событий на rowNode
+      rowNode.addEventListener("click", function (e) {
+        // Элемент, на котором был выполнен клик
+        const targetElem = e.target;
+
+        // Определяем был ли выполнен клик
+        // на одной из кнопок или внутри её
+        const buttonElem = targetElem.closest(".cart-btn");
+
+        if (buttonElem) {
+          e.stopPropagation();
+          // находим ближайшего родителя с классом ".card"
+          const cardNode = buttonElem.closest(".card");
+          if (cardNode) {
+            const productId = cardNode.id;
+            const product = products.find((prod) => prod.id === productId);
+            if (product) {
+              addToCart(product);
+              getCurrentCart();
+            }
+          }
+        } else {
+          selectCart(e);
+        }
+      });
     });
-    rowNode.addEventListener("click", selectCart);
   }
 
+  // Функция Логика добавления товара в корзину
+  function addToCart(product) {
+    // Получаем текущую корзину из localStorage если null тогда возвращается пустой массив
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Добавляем новый товар в корзину
+    cart.push(product);
+
+    // Сохраняем обновленную корзину в localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // Получение корзины из localStorage
+  function getCurrentCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      view.renderProductCart(cart);
+      console.log("Current cart:", cart);
+  }
+
+  // getCurrentCart()
+  // const currentCart = getCurrentCart();
+  // view.renderProductCart(currentCart); 
+
+  // Функция просмотра карточки товара
   function selectCart(e) {
     let target = e.target;
 
@@ -66,7 +123,8 @@ function handleMainPage() {
 
   // Ф-ия выхода из аккаунта
   logExitBtn.addEventListener("click", () => {
-    firebase.signOut()
+    firebase
+      .signOut()
       .then(() => {
         window.location.href = "index.html";
       })
@@ -78,6 +136,6 @@ function handleMainPage() {
   jsNavTabEnter.addEventListener("click", signInhandler);
 
   function signInhandler() {
-    window.location.href = "login.html"
+    window.location.href = "login.html";
   }
 }

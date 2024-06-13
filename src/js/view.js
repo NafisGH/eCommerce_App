@@ -4,11 +4,14 @@ export function createView() {
   const cartNode = document.querySelector(".cart");
   const navTabsEnter = document.querySelector(".lable-enter");
 
+  const listProductCart = document.querySelector(".list-product-in-cart");
+
   return {
     innerNode,
     rowNode,
     cartNode,
     navTabsEnter,
+    listProductCart,
 
     render: function (products) {
       products.forEach((product) => {
@@ -17,7 +20,8 @@ export function createView() {
     },
 
     renderCardProduct: function (product) {
-      innerNode.innerHTML = `
+      if (product) {
+        innerNode.innerHTML = `
 
     <a href="/">< Список товаров</a>
 
@@ -49,6 +53,9 @@ export function createView() {
           </div>
         </div>
       `;
+      } else {
+        console.error("Element with class 'inner' not found.");
+      }
     },
 
     listProduct: function (product) {
@@ -106,11 +113,24 @@ export function createView() {
       rowNode.append(divCol);
     },
     renderUser: function (user) {
-      // Добавляем созданный элемент на страницу
+      // Показывает почту вошедшего пользователя
       if (user) {
-        navTabsEnter.innerText = user.email
+        navTabsEnter.innerText = user.email;
       }
-      
     },
+
+    renderProductCart: function (cartProducts) {
+        this.listProductCart.innerHTML = ""; // Очищаем содержимое перед добавлением
+        cartProducts.forEach((product) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.innerHTML = `
+            <img class="top-area_img" src="${product.img}" alt="${product.brand}">
+          `;
+          listProductCart.appendChild(card);
+        });
+     
+    }
+    
   };
 }
