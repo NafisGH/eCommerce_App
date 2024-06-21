@@ -49,6 +49,7 @@ export function createFirebase(key) {
         console.log("Ошибка при получении данных", error);
       }
     },
+
     pullOneDocument: async function getDocument(id) {
       const docRef = doc(this.db, this.key, id);
       const docSnap = await getDoc(docRef);
@@ -60,6 +61,7 @@ export function createFirebase(key) {
         return null;
       }
     },
+
     createUser: async function getCreateUser(email, password) {
       console.log("createUser called with email:", email, "and password:", password);
 
@@ -72,8 +74,8 @@ export function createFirebase(key) {
         console.error("Ошибка при регистрации:", error.code, error.message);
       }
     },
+
     signIn: async function signInUser(email, password) {
-      console.log('-----1');
       try {
         const userCredential = await signInWithEmailAndPassword(this.auth, email, password)
         const user = userCredential.user;
@@ -83,6 +85,7 @@ export function createFirebase(key) {
         console.error("Ошибка при входе:", error.code, error.message);
       }
     },
+
     initAuthListener: function (callback) {
       onAuthStateChanged(this.auth, (user) => {
         if (user) {
@@ -92,6 +95,7 @@ export function createFirebase(key) {
         }
       });
     },
+
     signOut: function () {
       return this.auth.signOut()
     }

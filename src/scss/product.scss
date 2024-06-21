@@ -84,9 +84,9 @@
   }
 }
 
-.top-area_btn-in-cart {
-    position: absolute;
-    right: 0px;
+.btn-add-in-cart {
+  position: absolute;
+  right: 0px;
   background-color: black;
   padding: 8px 24px;
   border-radius: 14px;
@@ -96,12 +96,28 @@
   height: fit-content;
   width: fit-content;
   color: #fff;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 
   background-color: #1a1f16;
   & p {
     margin-left: 8px;
   }
 }
+
+.btn-add-in-cart:hover,
+.btn-add-in-cart:focus,
+.btn-add-in-cart:active {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
 
 .vertical-line {
   width: 4px;

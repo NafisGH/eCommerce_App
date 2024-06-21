@@ -14,9 +14,14 @@ export function createView() {
     listProductCart,
 
     render: function (products) {
-      products.forEach((product) => {
-        this.listProduct(product);
-      });
+      if (Array.isArray(products)) {
+        products.forEach((product) => {
+          this.listProduct(product);
+        });
+      } else {
+        console.error("Expected an array of products but got:", products); // Ожидалось множество продуктов, но получили:
+      }
+      
     },
 
     renderCardProduct: function (product) {
@@ -37,8 +42,8 @@ export function createView() {
               <h5 class="top-area_rating">Рейтинг *****</h5>
               <p class="top-area_price">$ ${product.price}</p>
               <p class="top-area_shortDescription">${product.shortDescription}</p>
-              <div class="top-area_btn-in-cart">
-                <div><img src="/images/Icon_cart.svg" alt=""></div>
+              <div class="btn-add-in-cart cart-btn ">
+                <div><img src="/images/Icon-in-cart.svg" alt=""></div>
                 <p>Корзина</p>
               </div>
             </div>
@@ -112,13 +117,16 @@ export function createView() {
 
       rowNode.append(divCol);
     },
+    // Показывает почту вошедшего пользователя
     renderUser: function (user) {
-      // Показывает почту вошедшего пользователя
       if (user) {
         navTabsEnter.innerText = user.email;
+      } else {
+        navTabsEnter.innerText = "Войти";
       }
     },
 
+    // Рендеринг корзины
     renderProductCart: function (cartProducts) {
         this.listProductCart.innerHTML = ""; // Очищаем содержимое перед добавлением
         cartProducts.forEach((product) => {
