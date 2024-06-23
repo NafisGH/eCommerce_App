@@ -14,7 +14,6 @@ function handleMainPage() {
   const innerNodeProduct = document.querySelector(".inner");
   let products = [];
 
-
   // Получение корзины из localStorage и рендеринг корзины
   function getCurrentCart() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -22,7 +21,7 @@ function handleMainPage() {
     view.renderProductCart(cart);
   }
   getCurrentCart();
-  // _________________________________________________________________________
+  // __________________________________________________________________
 
   const storedUser = localStorage.getItem("user");
   // Функция Проверка наличия данных пользователя в localStorage
@@ -78,8 +77,10 @@ function handleMainPage() {
               // находим ближайшего родителя с классом ".card"
               const cardNode = buttonElem.closest(".card");
               if (cardNode) {
+                console.log("cardNode", cardNode.id);
                 const productId = cardNode.id;
                 const product = products.find((prod) => prod.id === productId);
+                console.log("product", product);
                 if (product) {
                   addToCart(product);
                   getCurrentCart();
@@ -90,36 +91,18 @@ function handleMainPage() {
             }
           });
         } else {
-          console.error("Expected an array of products but got:", fetchedProducts);
+          console.error(
+            "Expected an array of products but got:",
+            fetchedProducts
+          );
         }
-      })
+      });
       return products;
     }
   }
   addProductsToCart();
 
   //_________________________________________________________________________
-
-  // Функция Добавление товара в корзину на странице самой карточки товара
-  // function handelAddProductInCart(event) {
-  //   // Элемент, на котором был выполнен клик
-  //   const targetElement = event.target;
-  //   const buttonElem = targetElement.closest(".cart-btn");
-  //   if (buttonElem) {
-  //     // находим ближайшего родителя с классом ".top-area"
-  //     const cardTopArea = buttonElem.closest(".top-area");
-  //     if (cardTopArea) {
-  //       const productId = cardTopArea.id;
-  //       const product = products.find((prod) => prod.id === productId);
-  //       if (product) {
-  //         addToCart(product);
-  //         getCurrentCart();
-  //       }
-  //     }
-  //   }
-  // }
-  // innerNodeProduct.addEventListener("click", handelAddProductInCart);
-  // _________________________________________________________________________
 
   // Функция добавления товара в корзину
   function addToCart(product) {
@@ -159,6 +142,39 @@ function handleMainPage() {
       if (productId) {
         firebase.pullOneDocument(productId).then((product) => {
           view.renderCardProduct(product);
+
+          // Функция Добавление товара в корзину на странице самой карточки товара
+          function handelAddProductInCart(event) {
+            // Элемент, на котором был выполнен клик
+            const targetElement = event.target;
+            const buttonElem = targetElement.closest(".cart-btn");
+            if (buttonElem) {
+              // находим ближайшего родителя с классом ".top-area"
+              const cardTopArea = buttonElem.closest(".top-area");
+              if (cardTopArea) {
+                const idCard = cardTopArea.id;
+
+                if (idCard === product.id) {
+                  console.log("4");
+                  addToCart(product);
+                  getCurrentCart();
+                }
+              }
+            }
+          }
+          // _________________________________________________________________________
+
+          // Функция проверки нахожусь ля на странице самой карточки товара, если да то функция срабатывает
+          function checkingProductPage() {
+            if (window.location.pathname === "/product.html") {
+              innerNodeProduct.addEventListener(
+                "click",
+                handelAddProductInCart
+              );
+            }
+          }
+          checkingProductPage();
+          // _________________________________________________________________________
         });
       }
     }

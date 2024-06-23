@@ -1,7 +1,6 @@
 // @import "normalize.css";
 @import "./reset.scss";
 
-
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -106,7 +105,9 @@
       cursor: pointer;
       background-color: #7af165;
     }
-    .lable-enter, .lable-cart, .lable-exit {
+    .lable-enter,
+    .lable-cart,
+    .lable-exit {
       white-space: nowrap;
       display: inline-block;
     }
@@ -133,7 +134,7 @@
       border-radius: 15px;
       display: flex;
       flex-direction: column;
-      
+
       .card__inner {
         display: flex;
         flex-direction: column;
@@ -171,7 +172,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 
     h2 {
       margin-bottom: 30px;
@@ -221,10 +221,26 @@
         justify-content: center;
         align-items: center;
         padding: 8px;
+
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
       }
-      & .cart-btn:hover {
+      & .cart-btn:hover,
+      & .cart-btn:focus,
+      & .cart-btn:active {
         cursor: pointer;
-        background-color: gray;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        -webkit-transition-timing-function: cubic-bezier(
+          0.47,
+          2.02,
+          0.31,
+          -0.36
+        );
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
       }
     }
   }

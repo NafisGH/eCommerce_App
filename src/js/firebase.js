@@ -33,6 +33,7 @@ export function createFirebase(key) {
     pull: async function get() {
       try {
         const querySnapshot = await getDocs(collection(this.db, this.key));
+
         const products = [];
 
         querySnapshot.forEach((doc) => {
@@ -46,7 +47,7 @@ export function createFirebase(key) {
         });
         return products;
       } catch (error) {
-        console.log("Ошибка при получении данных", error);
+        console.log("getDocs, Ошибка при получении данных(список карточек товара)", error);
       }
     },
 
@@ -54,24 +55,29 @@ export function createFirebase(key) {
       const docRef = doc(this.db, this.key, id);
       const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        return docSnap.data();
-      } else {
-        console.log("No such document!");
+      try {
+        const product = {
+            id: docSnap.id,
+            img: docSnap.data().img,
+            brand: docSnap.data().brand,
+            model: docSnap.data().model,
+            price: docSnap.data().price,
+          }
+        return product;
+      } catch (error) {
+        console.log("getDocument(id), Ошибка при получении карточки товара:", error);
         return null;
       }
     },
 
     createUser: async function getCreateUser(email, password) {
-      console.log("createUser called with email:", email, "and password:", password);
-
       try {
         console.log("Attempting to create user...");
         const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
         const user = userCredential.user;
         return user
       } catch (error) {
-        console.error("Ошибка при регистрации:", error.code, error.message);
+        console.error("getCreateUser, Ошибка при регистрации:", error.code, error.message);
       }
     },
 
@@ -82,7 +88,7 @@ export function createFirebase(key) {
         console.log('signIn', user);
         return user;
       } catch (error) {
-        console.error("Ошибка при входе:", error.code, error.message);
+        console.error("signInWithEmailAndPassword, Ошибка при входе:", error.code, error.message);
       }
     },
 

@@ -30,7 +30,7 @@ export function createView() {
 
     <a href="/">< Список товаров</a>
 
-        <div class="top-area">
+        <div class="top-area" id=${product.id}>
             <div class="top-area_card">
               <div class="top-area_wrapper-img">
                 <img class="top-area_img" src="${product.img}" alt="${product.brand}">
