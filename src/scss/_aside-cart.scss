@@ -1,0 +1,28 @@
+.cart {
+    max-width: 100%;
+    padding-left: 91px;
+    padding-right: 91px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 39px;
+    }
+
+    .wrapper-btn-cart {
+      background-color: black;
+      padding: 8px 24px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+
+      p {
+        color: #fff;
+        margin-left: 8px;
+      }
+    }
+  }

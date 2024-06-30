@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./src/scss/styles.scss">
-  <title>ecomerce project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/scss/reset.scss">
+  <link rel="stylesheet" href="./src/scss/cart.scss">
+  <title>cart</title>
 </head>
 
 <body>
@@ -23,9 +24,8 @@
       <span style="--i:10">.</span>
      </div>
   </div>
-
   <div class="container">
-    
+
     <div class="header">
       <div class="header_nav-bar">
         <div class="header__logo">
@@ -54,7 +54,7 @@
               <span class="lable-enter">Войти</span>
             </a>
           </div>
-          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="#">
+          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="/pages/cart.html">
               <div><img src="/images/shopping_cart.svg" alt=""></div>
               <span class="lable-cart">корзина</span>
             </a>
@@ -69,15 +69,16 @@
 
       </div>
     </div>
+    <h2>Корзина</h2>
+        <a class="btn-return" href="/"> &lt; Список товаров</a>
+    <div class="inner-cart">
+      <div class="list-cards">
 
-    <div class="wrap-product">
+        <!-- Сюда приходят карточки товаров с корзины главной страницы -->
 
-      <div class="row">
-        <!-- Сюда приходят карточки из firebase -->
       </div>
 
       <div class="vertical-line"></div>
-
 
       <aside class="cart">
         <h2>Корзина</h2>
@@ -91,13 +92,12 @@
       </aside>
 
     </div>
-  </div>
-
-
 
   </div>
+  <script type="module" src="./src/js/view.js"></script>
   <script type="module" src="./src/js/firebase.js"></script>
   <script type="module" src="./src/js/main.js"></script>
+  <script type="module" src="./src/js/cart.js"></script>
 
 </body>
 

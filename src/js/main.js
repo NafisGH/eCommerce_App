@@ -11,14 +11,35 @@ function handleMainPage() {
   const rowNode = document.querySelector(".row");
   const jsNavTabEnter = document.querySelector(".js-nav-tab_enter");
   const logExitBtn = document.querySelector(".js-nav-tab_exit");
+  const jsNavTabCart = document.querySelector(".js-nav-tab_cart");
   const innerNodeProduct = document.querySelector(".inner");
+
+  const loader = document.querySelector(".loader-container");
+
   let products = [];
 
-  // Получение корзины из localStorage и рендеринг корзины
-  function getCurrentCart() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Показ лоадера при загрузке страницы и переходе на другую страницу
+  function showLoader() {
+    loader.style.display = "flex";
+  }
 
-    view.renderProductCart(cart);
+  function hideLoader() {
+    loader.style.display = "none";
+  }
+
+  window.addEventListener("beforeunload", showLoader);
+  window.addEventListener("load", hideLoader);
+  // __________________________________________________________________
+
+  // Вспомогательная функция для получения данных из localStorage
+  function getCartFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
+  // Получение корзины из localStorage и рендеринг товаров
+  function getCurrentCart() {
+    const cart = getCartFromLocalStorage();
+    view.renderProductCart(cart); // на боковой панели
+    view.renderCardsListOnPage(cart); // на странице корзины
   }
   getCurrentCart();
   // __________________________________________________________________
@@ -49,12 +70,6 @@ function handleMainPage() {
   authenticationListenerInitialization();
   // _________________________________________________________________
 
-  // Загрузка корзины из localStorage
-  // const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  // Рендеринг корзины при загрузке страницы
-  // view.renderProductCart();
-
   // Функция Добавление товаров в корзину
   function addProductsToCart() {
     if (rowNode) {
@@ -77,10 +92,8 @@ function handleMainPage() {
               // находим ближайшего родителя с классом ".card"
               const cardNode = buttonElem.closest(".card");
               if (cardNode) {
-                console.log("cardNode", cardNode.id);
                 const productId = cardNode.id;
                 const product = products.find((prod) => prod.id === productId);
-                console.log("product", product);
                 if (product) {
                   addToCart(product);
                   getCurrentCart();
@@ -138,7 +151,6 @@ function handleMainPage() {
     if (isProductPage) {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get("id");
-
       if (productId) {
         firebase.pullOneDocument(productId).then((product) => {
           view.renderCardProduct(product);
@@ -153,9 +165,7 @@ function handleMainPage() {
               const cardTopArea = buttonElem.closest(".top-area");
               if (cardTopArea) {
                 const idCard = cardTopArea.id;
-
                 if (idCard === product.id) {
-                  console.log("4");
                   addToCart(product);
                   getCurrentCart();
                 }
@@ -196,9 +206,14 @@ function handleMainPage() {
   });
   // _________________________________________________________________________
 
-  jsNavTabEnter.addEventListener("click", signInhandler);
+  jsNavTabCart.addEventListener("click", cartHandler);
+  function cartHandler() {
+    window.location.href = "cart.html";
+  }
+
   // Функция перехода на страницу авторизации
-  function signInhandler() {
+  jsNavTabEnter.addEventListener("click", signInHandler);
+  function signInHandler() {
     window.location.href = "login.html";
   }
   // _________________________________________________________________________

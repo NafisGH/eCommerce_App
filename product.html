@@ -5,10 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details</title>
-  <link rel="stylesheet" href="/src/scss/product.scss">
+  <link rel="stylesheet" href="./src/scss/product.scss">
 </head>
 
 <body class="product-page">
+  <div class="loader-container" id="loader">
+    <div class="waviy">
+      <span style="--i:1">L</span>
+      <span style="--i:2">o</span>
+      <span style="--i:3">a</span>
+      <span style="--i:4">d</span>
+      <span style="--i:5">i</span>
+      <span style="--i:6">n</span>
+      <span style="--i:7">g</span>
+      <span style="--i:8">.</span>
+      <span style="--i:9">.</span>
+      <span style="--i:10">.</span>
+     </div>
+  </div>
   <div class="container">
     <div class="header">
       <div class="header_nav-bar">
@@ -17,7 +31,7 @@
         </div>
         <div class="catalog__container">
           <div class="catalog__icon">
-            <img src="./public/images/menu_catalog.svg" alt="">
+            <img src="/images/menu_catalog.svg" alt="">
           </div>
           <p class="catalog__button-label">Каталог</p>
         </div>
@@ -34,18 +48,18 @@
 
         <div class="nav-tabs">
           <div class="nav-tab js-nav-tab_enter"><a class=" person" href="#">
-              <div><img src="./public/images/person.svg" alt=""></div>
+              <div><img src="/images/person.svg" alt=""></div>
               <span class="lable-enter">Войти</span>
             </a>
           </div>
-          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="./pages/cart.html">
-              <div><img src="./public/images/shopping_cart.svg" alt=""></div>
+          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="/images/cart.svg">
+              <div><img src="/images/shopping_cart.svg" alt=""></div>
               <span class="lable-cart">корзина</span>
             </a>
           </div>
           <div class="nav-tab js-nav-tab_exit">
             <a href="">
-              <div><img src="./public/images/logout.svg" alt=""></div>
+              <div><img src="/images/logout.svg" alt=""></div>
               <span class="lable-exit">Выйти</span>
             </a>
           </div>
@@ -69,7 +83,7 @@
 
       </div> -->
         <div class="product-page_btn-cart">
-          <div><img src="./public/images/Icon_cart.svg" alt=""></div>
+          <div><img src="/images/Icon_cart.svg" alt=""></div>
           <p>Корзина</p>
         </div>
 
@@ -80,8 +94,8 @@
 
 
   <script type="module" src="./src/js/product.js"></script>
-  <script type="module" src="/src/js/firebase.js"></script>
-  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="./src/js/firebase.js"></script>
+  <script type="module" src="./src/js/main.js"></script>
 </body>
 
 </html>

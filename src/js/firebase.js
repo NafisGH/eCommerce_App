@@ -30,6 +30,7 @@ export function createFirebase(key) {
     key,
     db,
     auth,
+    // Получаю все карточки товара
     pull: async function get() {
       try {
         const querySnapshot = await getDocs(collection(this.db, this.key));
@@ -50,7 +51,7 @@ export function createFirebase(key) {
         console.log("getDocs, Ошибка при получении данных(список карточек товара)", error);
       }
     },
-
+// Получаю одну карточку товара по id
     pullOneDocument: async function getDocument(id) {
       const docRef = doc(this.db, this.key, id);
       const docSnap = await getDoc(docRef);
@@ -62,6 +63,8 @@ export function createFirebase(key) {
             brand: docSnap.data().brand,
             model: docSnap.data().model,
             price: docSnap.data().price,
+            shortDescription: docSnap.data().shortDescription,
+            fullDescription: docSnap.data().fullDescription,
           }
         return product;
       } catch (error) {
@@ -69,7 +72,7 @@ export function createFirebase(key) {
         return null;
       }
     },
-
+// Создание нового пользователя
     createUser: async function getCreateUser(email, password) {
       try {
         console.log("Attempting to create user...");
@@ -80,7 +83,7 @@ export function createFirebase(key) {
         console.error("getCreateUser, Ошибка при регистрации:", error.code, error.message);
       }
     },
-
+// Вход пользователя по почте и паролю
     signIn: async function signInUser(email, password) {
       try {
         const userCredential = await signInWithEmailAndPassword(this.auth, email, password)
@@ -91,7 +94,7 @@ export function createFirebase(key) {
         console.error("signInWithEmailAndPassword, Ошибка при входе:", error.code, error.message);
       }
     },
-
+// Слушатель состояния пользователя 
     initAuthListener: function (callback) {
       onAuthStateChanged(this.auth, (user) => {
         if (user) {

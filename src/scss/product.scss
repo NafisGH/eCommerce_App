@@ -1,9 +1,28 @@
+@import "loader";
+
+// Переменные
+$font-size-large: 61px;
+$font-size-medium: 31px;
+$font-size-small: 20px;
+$font-weight-bold: 700;
+$font-weight-normal: 400;
+$color-gray: rgba(26, 31, 22, 0.5);
+
+// Миксин для стилей текста
+@mixin text-style($font-size, $font-weight, $color: inherit) {
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: $font-weight;
+  line-height: normal;
+  color: $color;
+}
+
 .product-page_container {
-  width: 1440px;
-  margin: 0 auto;
-  background: #ededed;
+  // width: 1440px;
+  // margin: 0 auto;
+  // background: #ededed;
   display: flex;
-  padding-left: 122px;
+  // padding-left: 122px;
   padding-top: 51px;
   padding-bottom: 51px;
 }
@@ -19,6 +38,9 @@
   }
 }
 
+.top-area__btn-return:hover {
+  color: blue;
+}
 .top-area {
   display: flex;
   margin-top: 24px;
@@ -53,33 +75,19 @@
     max-width: 591px;
     position: relative;
     .top-area_brand {
-      font-family: "Open Sans";
-      font-size: 61.04px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
+      @include text-style($font-size-large, $font-weight-bold);
     }
     .top-area_model {
-      font-family: "Open Sans";
-      font-size: 31.25px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      color: rgba(26, 31, 22, 0.5);
+      @include text-style($font-size-medium, $font-weight-normal, $color-gray);
+    }
+    .top-area_rating {
+      @include text-style($font-size-medium, $font-weight-normal);
     }
     .top-area_price {
-      font-family: "Open Sans";
-      font-size: 31.25px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
+      @include text-style($font-size-medium, $font-weight-normal);
     }
     .top-area_shortDescription {
-      font-family: "Open Sans";
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
+      @include text-style($font-size-small, $font-weight-normal);
     }
   }
 }
@@ -96,28 +104,20 @@
   height: fit-content;
   width: fit-content;
   color: #fff;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  background-color: #1a1f16;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
 
-  background-color: #1a1f16;
+  &:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
   & p {
     margin-left: 8px;
   }
 }
-
-.btn-add-in-cart:hover,
-.btn-add-in-cart:focus,
-.btn-add-in-cart:active {
-  cursor: pointer;
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-}
-
 
 .vertical-line {
   width: 4px;

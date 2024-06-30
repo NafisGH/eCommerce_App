@@ -1,10 +1,15 @@
 export function createView() {
+
+
   const innerNode = document.querySelector(".inner"); // product.html
   const rowNode = document.querySelector(".row");
   const cartNode = document.querySelector(".cart");
   const navTabsEnter = document.querySelector(".lable-enter");
 
   const listProductCart = document.querySelector(".list-product-in-cart");
+  const listCardsOnCartPage = document.querySelector(".list-cards");
+
+ 
 
   return {
     innerNode,
@@ -12,6 +17,7 @@ export function createView() {
     cartNode,
     navTabsEnter,
     listProductCart,
+    listCardsOnCartPage,
 
     render: function (products) {
       if (Array.isArray(products)) {
@@ -21,14 +27,13 @@ export function createView() {
       } else {
         console.error("Expected an array of products but got:", products); // Ожидалось множество продуктов, но получили:
       }
-      
     },
-
+    // Рендер карточки товара
     renderCardProduct: function (product) {
       if (product) {
         innerNode.innerHTML = `
 
-    <a href="/">< Список товаров</a>
+    <a class="top-area__btn-return" href="/"> &lt; Список товаров</a>
 
         <div class="top-area" id=${product.id}>
             <div class="top-area_card">
@@ -39,7 +44,7 @@ export function createView() {
             <div class="about-device">
               <h5 class="top-area_brand">${product.brand}</h5>
               <h5 class="top-area_model">${product.model}</h5>
-              <h5 class="top-area_rating">Рейтинг *****</h5>
+              <h5 class="top-area_rating">Рейтинг &#9733 &#9733 &#9733 &#9733 &#9734</h5>
               <p class="top-area_price">$ ${product.price}</p>
               <p class="top-area_shortDescription">${product.shortDescription}</p>
               <div class="btn-add-in-cart cart-btn ">
@@ -119,26 +124,65 @@ export function createView() {
     },
     // Показывает почту вошедшего пользователя
     renderUser: function (user) {
-      if (user) {
-        navTabsEnter.innerText = user.email;
-      } else {
+      if (!user) {
         navTabsEnter.innerText = "Войти";
+      } else {
+        navTabsEnter.innerText = user.email;
       }
     },
+    
+    
 
-    // Рендеринг корзины
+    
+
+    // Рендеринг корзины на боковой панели
     renderProductCart: function (cartProducts) {
-        this.listProductCart.innerHTML = ""; // Очищаем содержимое перед добавлением
-        cartProducts.forEach((product) => {
-          const card = document.createElement("div");
-          card.classList.add("card");
-          card.innerHTML = `
+      if (!listProductCart) {
+        return;
+      }
+      this.listProductCart.innerHTML = ""; // Очищаем содержимое перед добавлением
+      cartProducts.forEach((product) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
             <img class="top-area_img" src="${product.img}" alt="${product.brand}">
           `;
-          listProductCart.appendChild(card);
-        });
-     
-    }
-    
+        listProductCart.appendChild(card);
+      });
+    },
+
+    // Рендеринг товаров добавленных в корзину на странице главной страницы корзины
+    renderCardsListOnPage: function (cartProducts) {
+      if (!window.location.pathname === "/cart.html" || !listCardsOnCartPage) {
+        return;
+      }
+      
+      this.listCardsOnCartPage.innerHTML = ""; // Очищаем содержимое перед добавлением
+      
+      cartProducts.forEach((product) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+                    <div class="card__img">
+                        <img class="img-product" src="${product.img}" alt="${product.brand}">
+                    </div>
+                    <div class="card__info">
+                        <p class="card__brand">${product.brand}</p>
+                        <p class="card__model">${product.model}</p>
+                        <p class="card__description">${product.shortDescription}</p>
+                        <p class="card__rating">Рейтинг &#9733 &#9733 &#9733 &#9733 &#9734</p>
+                        <div class="card__price">
+                            <div class="price ">$ ${product.price} x </div>
+                            <div class="quantity">
+                                <button class="quantity__minus js-quantity__minus"> - </button>
+                                <p class="quantity__count js-quantity__count"> 0 </p>
+                                <button class="quantity__plus js-quantity__plus"> + </button>
+                            </div>
+                        </div>
+                    </div>
+        `;
+        listCardsOnCartPage.appendChild(card);
+      });
+    },
   };
 }
