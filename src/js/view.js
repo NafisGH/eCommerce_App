@@ -151,8 +151,9 @@ export function createView() {
       });
     },
 
-    // Рендеринг товаров добавленных в корзину на странице главной страницы корзины
+    // Рендеринг товаров добавленных в корзину на главной страницы cart
     renderCardsListOnPage: function (cartProducts) {
+
       if (!window.location.pathname === "/cart.html" || !listCardsOnCartPage) {
         return;
       }
@@ -162,6 +163,7 @@ export function createView() {
       cartProducts.forEach((product) => {
         const card = document.createElement("div");
         card.classList.add("card");
+        card.setAttribute("data-id", product.id); // Устанавливаем уникальный идентификатор
         card.innerHTML = `
                     <div class="card__img">
                         <img class="img-product" src="${product.img}" alt="${product.brand}">
@@ -172,7 +174,12 @@ export function createView() {
                         <p class="card__description">${product.shortDescription}</p>
                         <p class="card__rating">Рейтинг &#9733 &#9733 &#9733 &#9733 &#9734</p>
                         <div class="card__price">
-                            <div class="price ">$ ${product.price} x </div>
+                            <div class="card__wrapper-price">
+                              <span>$</span>
+                              <div class="price">${product.price} x <span class="price-count">0</span></div>
+                              <button class="btn-delete-product"> <img src="/images/delete_product.svg" alt=""> </button>
+                            </div>
+                            
                             <div class="quantity">
                                 <button class="quantity__minus js-quantity__minus"> - </button>
                                 <p class="quantity__count js-quantity__count"> 0 </p>

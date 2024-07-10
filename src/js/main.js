@@ -3,6 +3,8 @@ import { createFirebase } from "./firebase";
 import { PRODUCTS_FIREBASE_KEY } from "./constants";
 import { createView } from "./view";
 
+export let products = [];
+
 document.addEventListener("DOMContentLoaded", handleMainPage);
 
 function handleMainPage() {
@@ -16,7 +18,7 @@ function handleMainPage() {
 
   const loader = document.querySelector(".loader-container");
 
-  let products = [];
+   
 
   // Показ лоадера при загрузке страницы и переходе на другую страницу
   function showLoader() {
@@ -139,7 +141,7 @@ function handleMainPage() {
     }
     if (target && target.classList.contains("card")) {
       const idCard = target.id;
-      window.location.href = `product.html?id=${idCard}`;
+      window.location.href = `/product.html?id=${idCard}`;
     }
   }
   // _________________________________________________________________________
@@ -198,7 +200,7 @@ function handleMainPage() {
       // Удаление данных пользователя из localStorage
       localStorage.removeItem("user");
       // Перенаправление на главную страницу
-      window.location.href = "index.html";
+      window.location.href = "/index.html";
     });
     view.renderUser().catch((error) => {
       console.error("Error signing out:", error);
@@ -207,14 +209,17 @@ function handleMainPage() {
   // _________________________________________________________________________
 
   jsNavTabCart.addEventListener("click", cartHandler);
-  function cartHandler() {
-    window.location.href = "cart.html";
+  function cartHandler(event) {
+    event.preventDefault();
+    console.log('Navigating to /cart.html')
+    window.location.href = "/cart.html";
   }
 
   // Функция перехода на страницу авторизации
   jsNavTabEnter.addEventListener("click", signInHandler);
-  function signInHandler() {
-    window.location.href = "login.html";
+  function signInHandler(event) {
+    event.preventDefault();
+    window.location.href = "/login.html";
   }
   // _________________________________________________________________________
 }

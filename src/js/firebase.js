@@ -44,6 +44,8 @@ export function createFirebase(key) {
             brand: doc.data().brand,
             model: doc.data().model,
             price: doc.data().price,
+            shortDescription: doc.data().shortDescription,
+            fullDescription: doc.data().fullDescription,
           });
         });
         return products;
