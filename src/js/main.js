@@ -18,8 +18,6 @@ function handleMainPage() {
 
   const loader = document.querySelector(".loader-container");
 
-   
-
   // Показ лоадера при загрузке страницы и переходе на другую страницу
   function showLoader() {
     loader.style.display = "flex";
@@ -41,7 +39,7 @@ function handleMainPage() {
   function getCurrentCart() {
     const cart = getCartFromLocalStorage();
     view.renderProductCart(cart); // на боковой панели
-    view.renderCardsListOnPage(cart); // на странице корзины
+    view.renderCardsListOnPage(cart); // на главной странице корзины
   }
   getCurrentCart();
   // __________________________________________________________________
@@ -200,6 +198,7 @@ function handleMainPage() {
       // Удаление данных пользователя из localStorage
       localStorage.removeItem("user");
       // Перенаправление на главную страницу
+      clearCart()
       window.location.href = "/index.html";
     });
     view.renderUser().catch((error) => {
@@ -208,12 +207,23 @@ function handleMainPage() {
   });
   // _________________________________________________________________________
 
+  // Функция удаления всех карточек из корзины
+  function clearCart() {
+    // Очищаем корзину
+    localStorage.setItem("cart", JSON.stringify([]));
+    view.renderCardProduct([]);
+    view.renderCardsListOnPage([]);
+  }
+  // _________________________________________________________________________
+
+  // Функция перехода на страницу корзины
   jsNavTabCart.addEventListener("click", cartHandler);
   function cartHandler(event) {
     event.preventDefault();
-    console.log('Navigating to /cart.html')
+    console.log("Navigating to /cart.html");
     window.location.href = "/cart.html";
   }
+  // _________________________________________________________________________
 
   // Функция перехода на страницу авторизации
   jsNavTabEnter.addEventListener("click", signInHandler);

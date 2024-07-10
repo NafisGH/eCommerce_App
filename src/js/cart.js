@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   plusCount();
+  // __________________________________________________________________
 
   // Функция уменьшения количества
   function minusCount() {
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   minusCount();
+  // __________________________________________________________________
 
   // Получаю список товаров из localStorage которые в корзине
   function getCartFromLocalStorage() {
@@ -47,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Делегирование событий для удаления продукта
   listCardsOnCartPage.addEventListener("click", deleteProduct);
 
+  // Функция удаления продукта из корзины
   function deleteProduct(e) {
     if (e.target.closest(".btn-delete-product")) {
       const card = e.target.closest(".card");
@@ -63,9 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("cart", JSON.stringify(cart));
 
       // Перерисовываем список карточек на странице
-      view.renderCardsListOnPage(cart);
-      view.renderProductCart(cart);
+      view.renderCardsListOnPage(cart); // на боковой панели
+      view.renderProductCart(cart); // на главной странице корзины
       console.log(cart);
     }
   }
+  // __________________________________________________________________
 });
