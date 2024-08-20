@@ -18,11 +18,8 @@ $color-gray: rgba(26, 31, 22, 0.5);
 }
 
 .product-page_container {
-  // width: 1440px;
-  // margin: 0 auto;
-  // background: #ededed;
   display: flex;
-  // padding-left: 122px;
+  justify-content: space-between;
   padding-top: 51px;
   padding-bottom: 51px;
 }
@@ -126,14 +123,24 @@ $color-gray: rgba(26, 31, 22, 0.5);
 }
 
 .product-page_cart {
-  max-width: 329px;
+  max-width: 300px;
+  width: 100%;
   flex-grow: 1;
-  margin-left: 28px;
-  margin-right: 28px;
+  // margin-left: 28px;
+  // margin-right: 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  .list-product-in-cart {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .card {
+      max-width: 64px;
+    }
+  }
 
   h2 {
     margin-bottom: 30px;

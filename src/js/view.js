@@ -146,6 +146,7 @@ export function createView() {
         card.classList.add("card");
         card.innerHTML = `
             <img class="top-area_img" src="${product.img}" alt="${product.brand}">
+            <div class="sumTotal"></div>
           `;
         listProductCart.appendChild(card);
       });

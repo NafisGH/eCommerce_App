@@ -72,4 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   // __________________________________________________________________
+
+  function sumTotal() {
+    // Получаем текущую корзину из localStorage если null тогда возвращается пустой массив
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+console.log(cart)
+
+     let sumCart = cart.reduce((sum, current)=> {
+       return sum + current.price 
+    }, 0)
+    return sumCart
+  }
+
+  const sum = sumTotal()
+  console.log(sum)
 });
