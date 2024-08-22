@@ -48,7 +48,7 @@ export function createView() {
               <p class="top-area_price">$ ${product.price}</p>
               <p class="top-area_shortDescription">${product.shortDescription}</p>
               <div class="btn-add-in-cart cart-btn ">
-                <div><img src="/images/Icon-in-cart.svg" alt=""></div>
+                <div><img src="./images/Icon-in-cart.svg" alt=""></div>
                 <p>Корзина</p>
               </div>
             </div>
@@ -106,7 +106,7 @@ export function createView() {
 
       const imgSvgCart = document.createElement("img");
       imgSvgCart.classList.add("img");
-      imgSvgCart.src = "/images/cart.svg";
+      imgSvgCart.src = "./images/cart.svg";
 
       divCardBody.append(img);
       divCard.append(divCardBody);
@@ -178,7 +178,7 @@ export function createView() {
                             <div class="card__wrapper-price">
                               <span>$</span>
                               <div class="price">${product.price} x <span class="price-count">0</span></div>
-                              <button class="btn-delete-product"> <img src="/images/delete_product.svg" alt=""> </button>
+                              <button class="btn-delete-product"> <img src="./images/delete_product.svg" alt=""> </button>
                             </div>
                             
                             <div class="quantity">

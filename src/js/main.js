@@ -139,7 +139,7 @@ function handleMainPage() {
     }
     if (target && target.classList.contains("card")) {
       const idCard = target.id;
-      window.location.href = `/product.html?id=${idCard}`;
+      window.location.href = `/eCommerce_App/product.html?id=${idCard}`;
     }
   }
   // _________________________________________________________________________
@@ -199,7 +199,7 @@ function handleMainPage() {
       localStorage.removeItem("user");
       // Перенаправление на главную страницу
       clearCart()
-      window.location.href = "/index.html";
+      window.location.href = "/eCommerce_App/index.html";
     });
     view.renderUser().catch((error) => {
       console.error("Error signing out:", error);
@@ -221,7 +221,7 @@ function handleMainPage() {
   function cartHandler(event) {
     event.preventDefault();
     console.log("Navigating to /cart.html");
-    window.location.href = "/cart.html";
+    window.location.href = "/eCommerce_App/cart.html";
   }
   // _________________________________________________________________________
 
@@ -229,7 +229,7 @@ function handleMainPage() {
   jsNavTabEnter.addEventListener("click", signInHandler);
   function signInHandler(event) {
     event.preventDefault();
-    window.location.href = "/login.html";
+    window.location.href = "/eCommerce_App/login.html";
   }
   // _________________________________________________________________________
 }
