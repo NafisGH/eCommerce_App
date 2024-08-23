@@ -1,14 +1,19 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: '.', // Устанавливаем корневую директорию на корень проекта index.html находится в корне проекта
+  root: '.',
   base: '/eCommerce_App/',
-  server: {
-    port: 8080,
-    hot: true,
-    open: '/index.html', // Открываем index.html при запуске сервера
-  },
   build: {
-    outDir: 'dist', // Выходная директория для сборки
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        cart: './cart.html',
+        login: './login.html',
+        page_cart_empty: './page_cart_empty.html',
+        product: './product.html',
+        registrationForm: './registrationForm.html',
+      },
+    },
   },
 });
