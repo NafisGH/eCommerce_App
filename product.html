@@ -1,16 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ecomerce project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
   <script type="module" crossorigin src="/eCommerce_App/assets/constants-D72KXPuJ.js"></script>
   <script type="module" crossorigin src="/eCommerce_App/assets/main-UODeN2PX.js"></script>
   <link rel="stylesheet" crossorigin href="/eCommerce_App/assets/constants-C2n-5StO.css">
+  <link rel="stylesheet" crossorigin href="/eCommerce_App/assets/product-DM1S_3m2.css">
 </head>
 
-<body>
+<body class="product-page">
   <div class="loader-container" id="loader">
     <div class="waviy">
       <span style="--i:1">L</span>
@@ -25,9 +26,7 @@
       <span style="--i:10">.</span>
      </div>
   </div>
-
   <div class="container">
-    
     <div class="header">
       <div class="header_nav-bar">
         <div class="header__logo">
@@ -35,7 +34,7 @@
         </div>
         <div class="catalog__container">
           <div class="catalog__icon">
-            <img src="./images/menu_catalog.svg" alt="">
+            <img src="/eCommerce_App/images/menu_catalog.svg" alt="">
           </div>
           <p class="catalog__button-label">Каталог</p>
         </div>
@@ -56,7 +55,7 @@
               <span class="lable-enter">Войти</span>
             </a>
           </div>
-          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="#">
+          <div class="nav-tab js-nav-tab_cart"><a class=" shopping_cart" href="./images/cart.svg">
               <div><img src="./images/shopping_cart.svg" alt=""></div>
               <span class="lable-cart">корзина</span>
             </a>
@@ -71,33 +70,31 @@
 
       </div>
     </div>
-
-    <div class="wrap-product">
-
-      <div class="row">
-        <!-- Сюда приходят карточки из firebase -->
+    <div class="product-page_container">
+      <div id="product-details" class="inner">
+        <!-- сюда приходит разметка карточки товара на которую нажали -->
       </div>
 
       <div class="vertical-line"></div>
 
-
-      <aside class="cart">
+      <aside class="product-page_cart">
         <h2>Корзина</h2>
         <div class="list-product-in-cart">
 
         </div>
-        <div class="wrapper-btn-cart">
+        <!-- <div class="product-in-cart">
+
+      </div> -->
+        <div class="product-page_btn-cart">
           <div><img src="./images/Icon_cart.svg" alt=""></div>
           <p>Корзина</p>
         </div>
+
       </aside>
 
     </div>
   </div>
 
-
-
-  </div>
 
 </body>
 
