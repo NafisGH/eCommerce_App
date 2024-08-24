@@ -26,9 +26,10 @@ function handleMainPage() {
   function hideLoader() {
     loader.style.display = "none";
   }
-
+// Используем событие `beforeunload` для показа лоадера при навигации
   window.addEventListener("beforeunload", showLoader);
-  window.addEventListener("load", hideLoader);
+  // используем событие `pageshow` для скрытия лоадера оно срабатывает и при загрузке из кеша
+  window.addEventListener("pageshow", hideLoader);
   // __________________________________________________________________
 
   // Вспомогательная функция для получения данных из localStorage

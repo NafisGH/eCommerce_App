@@ -155,7 +155,7 @@ export function createView() {
     // Рендеринг товаров добавленных в корзину на главной страницы cart
     renderCardsListOnPage: function (cartProducts) {
 
-      if (!window.location.pathname === "/cart.html" || !listCardsOnCartPage) {
+      if (!window.location.pathname === "/eCommerce_App/cart.html" || !listCardsOnCartPage) {
         return;
       }
       
