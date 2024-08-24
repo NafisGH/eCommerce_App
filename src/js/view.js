@@ -33,7 +33,7 @@ export function createView() {
       if (product) {
         innerNode.innerHTML = `
 
-    <a class="top-area__btn-return" href="/"> &lt; Список товаров</a>
+    <a class="top-area__btn-return" href="/eCommerce_App"> &lt; Список товаров</a>
 
         <div class="top-area" id=${product.id}>
             <div class="top-area_card">
