@@ -6,7 +6,7 @@ export function createView() {
   const cartNode = document.querySelector(".cart");
   const navTabsEnter = document.querySelector(".lable-enter");
 
-  const listProductCart = document.querySelector(".list-product-in-cart");
+  const listProductCart = document.querySelector(".cart__list");
   const listCardsOnCartPage = document.querySelector(".list-cards");
 
  
@@ -33,7 +33,7 @@ export function createView() {
       if (product) {
         innerNode.innerHTML = `
 
-    <a class="top-area__btn-return" href="/eCommerce_App"> &lt; Список товаров</a>
+    <a class="top-area__btn-return" href="/eCommerce_App/"> &lt; Список товаров</a>
 
         <div class="top-area" id=${product.id}>
             <div class="top-area_card">

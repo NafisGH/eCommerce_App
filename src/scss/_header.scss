@@ -8,7 +8,7 @@
     width: 100%;
     margin-bottom: 20px;
   
-    .header_nav-bar {
+    .header__nav-bar {
       display: flex;
       align-items: center;
       width: 100%;
@@ -22,7 +22,7 @@
       font-size: 42px;
     }
   
-    .catalog__container {
+    .catalog {
       display: flex;
       align-items: center;
       border: 1px black solid;
@@ -41,7 +41,7 @@
       }
     }
   
-    .input__container {
+    .search {
       margin-left: 50px;
       width: 100%;
       form {
@@ -51,7 +51,7 @@
         border: 1px black solid;
         border-radius: 5px;
   
-        .input__field {
+        .search__field {
           width: 100%;
   
           input {
@@ -60,17 +60,17 @@
           }
         }
   
-        & .input__icons:hover {
+        & .search__icon:hover {
           cursor: pointer;
         }
   
-        .input__icons {
+        .search__icon {
           border-radius: 5px;
           padding: 2px;
         }
       }
     }
-    .nav-tabs {
+    .user-actions {
       display: flex;
       margin-left: 50px;
   

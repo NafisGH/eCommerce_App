@@ -16,7 +16,7 @@ function handleMainPage() {
   const jsNavTabCart = document.querySelector(".js-nav-tab_cart");
   const innerNodeProduct = document.querySelector(".inner");
 
-  const loader = document.querySelector(".loader-container");
+  const loader = document.querySelector(".loader");
 
   // Показ лоадера при загрузке страницы и переходе на другую страницу
   function showLoader() {

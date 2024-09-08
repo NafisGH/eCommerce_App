@@ -121,7 +121,7 @@
     flex-direction: column;
     align-items: center;
 
-    .list-product-in-cart {
+    .cart__list {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -135,7 +135,7 @@
       font-size: 39px;
     }
 
-    .wrapper-btn-cart {
+    .cart__action {
       background-color: black;
       padding: 8px 24px;
       border-radius: 14px;
