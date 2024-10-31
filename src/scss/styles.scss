@@ -7,14 +7,18 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
-  background: #e1dddd;
+}
+
+.main__inner {
+  display: flex;
+  padding: 20px 0 0 0;
 }
 
 .main {
-  display: flex;
-  padding-top: 51px;
-  padding-bottom: 51px;
-  padding-left: 122px;
+  // display: flex;
+  // padding-top: 51px;
+  // padding-bottom: 51px;
+  // padding-left: 122px;
 
   .row {
     display: flex;

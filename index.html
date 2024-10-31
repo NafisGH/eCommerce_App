@@ -21,70 +21,67 @@
       <span style="--i:8">.</span>
       <span style="--i:9">.</span>
       <span style="--i:10">.</span>
-     </div>
+    </div>
   </div>
 
-
-    
-    <header class="header">
+  <header class="header">
+    <div class="container header__container">
       <div class="header__nav-bar">
         <div class="header__logo">
           Logo
         </div>
-        <nav class="header__nav">
-          <div class="catalog">
-            <div class="catalog__icon">
+        <div class="header__nav">
+          <div class="header__catalog">
+            <div class="header__catalog-icon">
               <img src="./images/menu_catalog.svg" alt="Catalog Icon">
             </div>
-            <p class="catalog__button-label">Каталог</p>
+            <p class="header__catalog-label">Catalog</p>
           </div>
-          <div class="search">
-            <form action="">
-              <div class="search__field">
-                <input type="text" placeholder="Искать товар">
+          <div class="header__search">
+            <form action="" class="header__search-form">
+              <div class="header__search-field">
+                <input type="text" placeholder="Search product" class="header__search-input">
               </div>
-              <div class="search__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                  width="24px" fill="#5f6368">
+              <div class="header__search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="#5f6368">
                   <path
                     d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
                 </svg>
               </div>
             </form>
           </div>
-        </nav>
-        
+        </div>
 
-        <div class="user-actions">
-          <div class="nav-tab js-nav-tab_enter">
-            <a href="#" class="user-actions__tab user-actions__tab--login">
-              <div>
-                <img src="./images/person.svg" alt="">
-              </div>
-              <span class="lable-enter">Войти</span>
+
+        <div class="header__user-actions">
+          <div class="header__user-tab js-nav-tab_enter">
+            <a href="#" class="header__user-link user-actions__tab--login">
+              <img src="./images/person.svg" alt="">
+              <span class="header__user-label lable-enter">Log in</span>
             </a>
           </div>
-          <div class="nav-tab js-nav-tab_cart">
-            <a href="#" class="user-actions__tab user-actions__tab--cart">
-              <div><img src="./images/shopping_cart.svg" alt="">
-              </div>
-              <span class="lable-cart">корзина</span>
+          <div class="header__user-tab js-nav-tab_cart">
+            <a href="#" class="header__user-link user-actions__tab--cart">
+              <img src="./images/shopping_cart.svg" alt="">
+              <span class="header__user-label lable-cart">Basket</span>
             </a>
           </div>
-          <div class="nav-tab js-nav-tab_exit">
-            <a href="" class="user-actions__tab user-actions__tab--logout">
-              <div>
-                <img src="./images/logout.svg" alt="">
-              </div>
-              <span class="lable-exit">Выйти</span>
+          <div class="header__user-tab js-nav-tab_exit">
+            <a href="" class="header__user-link user-actions__tab--logout">
+              <img src="./images/logout.svg" alt="">
+              <span class="header__user-label lable-exit">Exit</span>
             </a>
           </div>
-          
+
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-      <main class="main">
+  <main class="main">
+    <div class="container">
+      <div class="main__inner">
         <div class="products__list row">
           <!-- Карточки из firebase -->
         </div>
@@ -99,12 +96,16 @@
             <p class="cart__label">Корзина</p>
           </div>
         </aside>
-      </main>
+      </div>
+
+    </div>
+
+  </main>
 
 
-    <footer class="footer">
-      <!-- Footer content -->
-    </footer>
+  <footer class="footer">
+    <!-- Footer content -->
+  </footer>
 
 
   <script type="module" src="./src/js/firebase.js"></script>
