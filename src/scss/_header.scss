@@ -1,5 +1,11 @@
-.container {
-}
+$padding-small: 5px;
+$padding-medium: 10px;
+$padding-large: 20px;
+$border-radius-small: 5px;
+$border-radius-large: 20px;
+$color-black: black;
+$color-green: #7af165;
+$color-background: #f3eaea;
 
 .header {
   &__nav-bar {
@@ -7,15 +13,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px 10px;
-    background-color: #f3eaea;
+    padding: $padding-large $padding-medium;
+    background-color: $color-background;
   }
 
   &__logo {
-    padding: 10px 30px;
-    border-radius: 20px;
-    background: black;
-    color: #7af165;
+    padding: $padding-medium $padding-large;
+    border-radius: $border-radius-large;
+    background: $color-black;
+    color: $color-green;
     font-size: 42px;
   }
 
@@ -28,8 +34,8 @@
   &__catalog {
     display: flex;
     align-items: center;
-    border: 1px black solid;
-    border-radius: 5px;
+    border: 1px $color-black solid;
+    border-radius: $border-radius-small;
     padding: 3px 15px;
 
     &-icon {
@@ -42,10 +48,10 @@
         height: 100%;
       }
     }
-  }
 
-  &__catalog:hover {
-    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__search {
@@ -56,26 +62,41 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px black solid;
-      border-radius: 5px;
+      border: 1px $color-black solid;
+      border-radius: $border-radius-small;
 
       &-field {
         width: 100%;
 
         &-input {
           width: 100%;
-          padding: 5px;
+          padding: $padding-small;
         }
       }
 
       &-icon {
-        border-radius: 5px;
+        border-radius: $border-radius-small;
         padding: 2px;
       }
     }
+
     &-icon:hover {
       cursor: pointer;
     }
+  }
+
+  &__user-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__user-label {
+    margin-top: $padding-small;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 20px;
   }
 
   &__user-actions {
@@ -83,23 +104,18 @@
   }
 
   &__user-tab {
-    // text-decoration: none;
-    // color: black;
-    // font-size: 15px;
-    // padding: 3px;
-    // border-radius: 5px;
-    // letter-spacing: -0.54px;
     display: flex;
     align-items: center;
     transition-duration: 0.3s;
-  }
 
-  &__user-tab:hover {
-    cursor: pointer;
-    transform: scale(1.2);
-  }
-  &__user-tab:not(:first-child) {
-    margin-left: 20px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    &:not(:first-child) {
+      margin-left: $padding-large;
+    }
   }
 
   &__user-link {
